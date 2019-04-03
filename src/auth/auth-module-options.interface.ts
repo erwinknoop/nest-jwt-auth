@@ -8,6 +8,6 @@ export interface AuthModuleOptions extends JwtModuleOptions {
 
 export interface AuthModuleAsyncOptions
   extends Pick<ModuleMetadata, "imports"> {
-  readonly useFactory: () => Promise<AuthModuleOptions>;
-  readonly inject?: any[];
+  readonly useFactory: (...args: any[]) => Promise<AuthModuleOptions>;
+  readonly inject: any[];
 }
