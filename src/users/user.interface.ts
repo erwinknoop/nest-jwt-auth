@@ -1,4 +1,4 @@
 export interface User {
-  readonly id?: any;
+  id?: any;
   readonly password: string;
 }
