@@ -22,8 +22,12 @@
     "type": "git",
     "url": "git+https://github.com/erwinknoop/nest-jwt-auth.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "Nest",
+    "JWT",
+    "Authentication"
+  ],
+  "author": "Erwin Knoop",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/erwinknoop/nest-jwt-auth/issues"
