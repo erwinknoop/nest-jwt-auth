@@ -3,8 +3,11 @@ import { JwtModule } from "@nestjs/jwt";
 import { JwtStrategy } from "./jwt.strategy";
 import { AuthService } from "./auth.service";
 import { AuthController } from "./auth.controller";
-import { AuthModuleOptions } from "./auth-module-options.interface";
-import { createAuthProvider } from "./auth.provider";
+import { createAuthProvider, createAsyncAuthProvider } from "./auth.provider";
+import {
+  AuthModuleOptions,
+  AuthModuleAsyncOptions,
+} from "./auth-module-options.interface";
 
 @Module({
   controllers: [AuthController],
@@ -14,8 +17,18 @@ export class AuthModule {
   public static register(options: AuthModuleOptions): DynamicModule {
     return {
       module: AuthModule,
-      providers: createAuthProvider(options),
+      providers: [createAuthProvider(options)],
       imports: [JwtModule.register(options)],
+    };
+  }
+
+  public static registerAsync(options: AuthModuleAsyncOptions): DynamicModule {
+    return {
+      module: AuthModule,
+      providers: [createAsyncAuthProvider(options)],
+      imports: options.imports
+        ? [...options.imports, JwtModule.registerAsync(options)]
+        : [JwtModule.registerAsync(options)],
     };
   }
 }
