@@ -33,7 +33,16 @@
     "url": "https://github.com/erwinknoop/nest-jwt-auth/issues"
   },
   "homepage": "https://github.com/erwinknoop/nest-jwt-auth#readme",
+  "dependencies": {
+    "@nestjs/common": "^6.0.0",
+    "@nestjs/jwt": "^6.0.0",
+    "@nestjs/passport": "^6.0.0",
+    "bcryptjs": "^2.4.3",
+    "passport-jwt": "^4.0.0"
+  },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/passport-jwt": "^3.0.1",
     "prettier": "^1.16.4",
     "tslint": "^5.15.0",
     "typescript": "^3.4.1"
