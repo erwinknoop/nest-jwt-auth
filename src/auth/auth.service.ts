@@ -24,7 +24,7 @@ export class AuthService {
       login.email.toLowerCase().trim(),
     );
 
-    if (!user) {
+    if (!user || !user.id) {
       return null;
     }
 
