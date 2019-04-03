@@ -1,8 +1,8 @@
-import { Injectable, Inject } from "@nestjs/common";
+import { Injectable, Inject, BadRequestException } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
 import { compare } from "bcryptjs";
 import { User } from "../users/user.interface";
-import { Login } from "./login.interface";
+import { LoginDto } from "./login.dto";
 import { Token } from "./token.interface";
 import { JwtPayload } from "./jwt-payload.interface";
 import { AuthModuleOptions } from "./auth-module-options.interface";
@@ -15,9 +15,13 @@ export class AuthService {
     private readonly jwtService: JwtService,
   ) {}
 
-  public async createToken(login: Login): Promise<Token | null> {
+  public async createToken(login: LoginDto): Promise<Token | null> {
+    if (!login.email || !login.password) {
+      return null;
+    }
+
     const user = await this.options.usersService.findByEmail(
-      login.email && login.email.toLowerCase().trim(),
+      login.email.toLowerCase().trim(),
     );
 
     if (!user) {

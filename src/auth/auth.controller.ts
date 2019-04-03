@@ -6,7 +6,7 @@ import {
   HttpCode,
 } from "@nestjs/common";
 import { AuthService } from "./auth.service";
-import { Login } from "./login.interface";
+import { LoginDto } from "./login.dto";
 import { Token } from "./token.interface";
 
 @Controller("auth")
@@ -15,7 +15,7 @@ export class AuthController {
 
   @Post("token")
   @HttpCode(200)
-  public async token(@Body() login: Login): Promise<Token> {
+  public async token(@Body() login: LoginDto): Promise<Token> {
     const token = await this.authService.createToken(login);
 
     if (!token) {
