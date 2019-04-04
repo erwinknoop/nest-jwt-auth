@@ -1,3 +1,6 @@
+![npm](https://img.shields.io/npm/dt/nest-jwt-auth.svg)
+![npm](https://img.shields.io/npm/v/nest-jwt-auth.svg)
+
 # Nest JWT authentication
 
 This package is meant to simplify adding JWT authentication to your [Nest application](https://nestjs.com/). The package exposes a module which mounts an authentication endpoint at the `/auth/token` url.
